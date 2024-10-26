@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建新帐户</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="iconfont/iconfont.css">          
+</head>
+<body>
+    <div class="container">
+        <form class="form" onsubmit="return validateForm()">
+            <h2>创建新帐户</h2>
+            <p>快速又简便。</p>
+
+           <div style="display: flex; align-items: center; margin-bottom: 16px;">
+               <div style="margin-right: 16px; position: relative;">
+                   <input type="text" id="lastName" placeholder="姓" 
+                          pattern="[\s\S]{0,3}" title="姓和名不为空，最多3个字符" oninput="validateInput(this)">
+                   <span id="lastNameError" class="error-message" style="display:none;color:red;">请输入姓</span>
+                   <svg class="icon error-icon" id="lastNameErrorIcon" aria-hidden="true" style="display:none; position: absolute; right: 8px; top: 50%; transform: translateY(-50%);">
+                       <use xlink:href="#icon-gantanhao"></use>
+                   </svg>
+               </div>
+               <div style="position: relative;">
+                   <input type="text" id="firstName" placeholder="名" 
+                          pattern="[\s\S]{0,3}" title="姓和名不为空，最多3个字符" oninput="validateInput(this)">
+                   <span id="firstNameError" class="error-message" style="display:none;color:red;">请输入名</span>
+                   <svg class="icon error-icon" id="firstNameErrorIcon" aria-hidden="true" style="display:none; position: absolute; right: 8px; top: 50%; transform: translateY(-50%);">
+                       <use xlink:href="#icon-gantanhao"></use>
+                   </svg>
+               </div>
+           </div>
+
+           <div style="margin-bottom: 16px; position: relative;">
+               <input type="email" id="email" placeholder="手机号或邮箱" 
+                      pattern="^\d{11}$|^\w+@\w+\.com$" title="请输入11位手机号或符合 ***@**.com 形式的邮箱" oninput="validateInput(this)">
+               <span id="emailError" class="error-message" style="display:none;color:red;">请输入手机号或邮箱</span>
+               <svg class="icon error-icon" aria-hidden="true" id="emailErrorIcon" style="display:none; position: absolute; right: 8px; top: 50%; transform: translateY(-50%);">
+                   <use xlink:href="#icon-gantanhao"></use>
+               </svg>
+           </div>
+
+           <div style="margin-bottom: 16px; position: relative;">
+               <input type="password" id="password" placeholder="创建密码" 
+                      pattern="^[\w]{6,16}$" title="密码为6~16位数字、字母、下划线" oninput="validateInput(this)">
+               <span id="passwordError" class="error-message" style="display:none;color:red;">请输入密码</span>
+               <svg class="icon error-icon" aria-hidden="true" id="passwordErrorIcon" style="display:none; position: absolute; right: 8px; top: 50%; transform: translateY(-50%);">
+                   <use xlink:href="#icon-gantanhao"></use>
+               </svg>
+           </div>
+            
+
+            <div class="input-group" style="margin-bottom: 16px;">
+                <label for="birthdate" class="label-with-icon">
+                    出生日期
+                    <svg class="icon info-icon" aria-hidden="true">
+                        <title>点击查看更多</title>
+                        <use xlink:href="#icon-bangzhu"></use>
+                    </svg>
+                </label>
+            </div>
+            <div class="input-group" style="display: flex; align-items: center; margin-bottom: 16px;">
+                <select id="year" style="margin-right: 8px;">
+                    <option value="">年份</option> <!-- 默认提示选项 -->
+                </select>
+                <select id="month" style="margin-right: 8px;">
+                    <option value="">月份</option> <!-- 默认提示选项 -->
+                </select>
+                <select id="day">
+                    <option value="">日期</option> <!-- 默认提示选项 -->
+                </select>
+            </div>
+
+
+            <div class="input-group" margin-bottom: 16px;>
+                <label for="gender" class="label-with-icon">
+                    性别
+                    <svg class="icon info-icon" aria-hidden="true">
+                        <title>点击查看更多</title>
+                        <use xlink:href="#icon-bangzhu"></use>
+                    </svg>
+                </label>
+
+                <div class="radio-group" margin-bottom: 16px;>
+                    <label>
+                        <input type="radio" name="gender" value="女"  checked="checked" onclick="toggleCustomGender()"> 女
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="男" onclick="toggleCustomGender()"> 男
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="自定义" onclick="toggleCustomGender()"> 自定义
+                    </label>
+                </div>
+                <input type="text" placeholder="请输入您的性别" class="gender-input" id="custom-gender" style="display:none;"
+                pattern="[\s\S]{0,4}" title="最多为四个字符"  oninput="validateInput(this)" >
+            </div>
+
+            <div id="tips" >
+                点击注册，即表示你同意接受我们的<a>条款</a>、<a>隐私权政策</a>和<a>Cookie政策</a>。
+                你可能会受到我们的短信通知，并可以随时退订。
+            </div>
+
+            <div class="btncontainer" >
+                <button class="btn">注册</button>
+            </div>
+
+            <p class="login">有账户了？</p>
+
+            <!-- 弹出的提示框 -->
+             <div class="popover" id="popover-info1">
+                <strong>提供你的出生日期</strong> 将确保提供与你年龄相符的使用体验。详细信息，请参阅我们的<a>隐私权政策</a>。
+            </div>
+
+            <div class="popover" id="popover-info2">
+               如果你希望选择其他性别，或不想透露性别信息，请选择“自定义”
+            </div>
+        </form>
+    </div>
+</body>
+<script src="script.js"></script>
+<script src="iconfont/iconfont.js"></script>  
+</html>

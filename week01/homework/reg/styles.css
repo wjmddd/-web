@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+}
+
+p {
+    text-align: center;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    position: relative; /* 让弹出框定位在父容器内 */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], .gender-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input:required {
+    border-color: red;
+}
+
+select {
+    width: 32%;
+    padding: 8px;
+    margin-right: 2%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.radio-group label {
+    font-size: 14px;
+}
+
+.gender-input {
+    margin-top: 10px;
+}
+
+/* 父容器设置为 flex 布局以确保按钮居中 */
+.btncontainer {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+}
+
+/* 按钮样式 */
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50%;
+    font-size: 16px;
+    text-align: center; /* 按钮文本居中 */
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.login {
+    text-align: center;
+    margin-top: 15px;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.login:hover {
+    text-decoration: underline;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.info-icon {
+    margin-left: 5px;
+    color: #808080; /* 灰色图标 */
+    cursor: pointer;
+}
+
+.info-icon:hover {
+    color: #000; /* 鼠标悬停时变黑色 */
+}
+
+.label-with-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.popover {
+    display: none; /* 默认隐藏 */
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    width: 250px; /* 根据内容调整 */
+    z-index: 1000;
+    transform: translateY(-50%); /* 使弹出框垂直居中对齐 */
+    font-size: 12px;
+    font-family: ui-rounded; /* 设置字体样式 */
+}
+#popover-info1{
+    top: 49.8%; /* 根据需要调整 */
+    left: 46%; /* 弹出框在图标的右侧 */
+    transform: translateY(-50%); /* 使弹出框垂直居中对齐 */
+}
+
+#popover-info2 {
+  top: 61.5%;
+  left: 44%;
+  transform: translateY(-50%);
+}
+
+.popover a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.popover a:hover {
+    text-decoration: underline;
+}
+
+.popover::after {
+    content: "";
+    position: absolute;
+    top: 50%; /* 箭头指向图标的中心 */
+    left: -16px; /* 箭头在弹出框的左侧 */
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent #ccc;
+}
+
+.popover::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -14px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+    transform: translateY(-50%); /* 使箭头垂直居中对齐 */
+}
+
+#tips a {
+    color: #527797; /* 链接默认颜色 */
+    text-decoration: none; /* 去掉下划线 */
+} 
+
+#tips a:hover {
+    color: #373f85; /* 悬停时改变颜色 */
+    text-decoration: underline; /* 悬停时显示下划线 */
+}
+
+#tips {
+    font-size: 10px; /* 设置字体大小 */
+    font-family: ui-rounded; /* 设置字体样式 */
+    font-weight: 400; /* 设置字体粗细 */
+    letter-spacing: 0.5px; /* 设置字母间距 */
+    color: #555; /* 设置字体颜色 */
+    margin-bottom: 16px;
+} 
