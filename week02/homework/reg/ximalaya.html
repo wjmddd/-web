@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>喜马拉雅</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/side.css" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="../iconfont/iconfont.css">
+</head>
+<body>
+
+  <div class="all-container">
+    <div class="first-header">
+      <header class="header common-w">
+        <!-- 左边 -->
+        <div class="left">
+          <!-- logo实现 -->
+          <div class="xmly-logo">
+            <a href="https://www.ximalaya.com/" target="_blank">
+              <span>喜马拉雅</span>
+              <img src="../img/logo.png" alt="" class="logo-img">
+            </a>
+          </div>
+          <!-- 左边导航实现 -->
+          <nav class="left-nav">
+            <ul>
+              <li><a href=" " class="active">发现</a></li>
+              <li class="fenlei">
+                <a href=" " >分类</a>
+              </li>
+              <li><a href=" " >电台</a></li>
+              <div class="nav-box"></div>
+            </ul>
+          </nav>
+        </div>
+        <!-- 中间搜索框 -->
+        <div class="mid">
+          <div class="mid-search-wrap">
+            <input class="mid-search" placeholder="专辑/声音/主播">
+            <span class="iconfont icon-sousuo1 mid-search-icon"></span>
+          </div>
+        </div>
+
+        <!-- 右侧导航栏 -->
+        <div class="right">
+          <div class="icon-text-wrap">
+              <span class="iconfont icon-yunshangchuan"></span>
+              <p>上传</p>
+          </div>
+          <div class="icon-text-wrap">
+              <span class="iconfont icon-chuangzuozhezhongxin"></span>
+              <p>创作中心</p>
+          </div>
+          <div class="icon-text-wrap">
+              <span class="iconfont icon-A"></span>
+              <p>有声出版</p>
+          </div>
+          <div class="icon-text-wrap">
+              <span class="iconfont icon-huaban9"></span>
+              <p>客户端</p>
+          </div>
+          <!-- 头像 -->
+          <div class="right-touxiang">
+            <img src="../img/touxiang.png" alt="头像">
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="home-container">
+      <!-- 主要内容 -->
+      <div class="main-wrap">
+        <!-- 猜你喜欢 -->
+        <div class="recommendations-wrap">
+          <section class="recommendations ">
+            <div class="reco-head">
+              <h2>猜你喜欢</h2>
+              <div class="reco-btn">
+                <span class="iconfont icon-shuaxin" onclick="changePage()">
+                  <p>换一批</p>
+                </span>
+              </div>
+            </div>
+            <!-- 图片栏 -->
+            <div class="reco-container" id="guesslike-container">
+              <!-- json数据插入到这里 -->
+            </div>
+
+
+          </section>
+        </div>
+
+        <!-- 有声书 -->
+        <div class="youshengshu-wrap">
+          <section class="youshengshu">
+            <div class="you-head">
+              <h2>有声书</h2>
+              <div class="you-nav-wrap">
+                <nav class="you-nav" id="nav1" onclick="handleNavClick('nav1')">头陀渊</nav>
+                <nav class="you-nav" id="nav2" onclick="handleNavClick('nav2')">斗破苍穹</nav>
+                <nav class="you-nav" id="nav3" onclick="handleNavClick('nav3')">星汉灿烂</nav>
+                <nav class="you-nav" id="nav4" onclick="handleNavClick('nav4')">三体</nav>
+              </div>
+              <div class="you-btn">
+                <span class="iconfont" onclick="">
+                  <p>更多</p>
+                </span>
+              </div>
+            </div>
+
+            <!-- 图片栏 -->
+            <div class="you-container" id="audiobook-container">
+              <!-- json数据插入到这里 -->
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!--侧栏导航 -->
+      <div class="side-wrap">
+        <!-- 登录界面 -->
+        <div class="login-wrap">
+          <div class="login">
+            <img src="../img/loginbeijing.png" alt="背景">
+            <div class="login-touxiang">
+                <img src="../img/logintouxiang.png">
+
+                <p>快速登录，开启嗨听体验</p>
+            </div>
+            <div class="login-btn">
+              <button>登录</button>
+            </div>
+          </div>
+
+          <div class="download">
+            <div class="download-wenzi">
+              <span class="title">下载<span class="title-red">手机APP</span></span> 
+              <div class="neirong">
+                <div>7天免费畅听 <img src="../img/download-side.png"></div>
+                <div>10万本会员专辑</div>
+              </div>
+            </div>
+            <div class="download-tuxiang">
+              <canvas height="90" width="90" style="height: 72px; width: 72px;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- 有声书排行榜 -->
+         <div class="ranking-wrap">
+          <div class="paihang-container" id="ranking-container">
+            <!-- 这里存放json数据 -->
+          </div>
+         </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+<script src="script.js"></script>
+</html>

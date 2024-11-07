@@ -1,0 +1,191 @@
+.login-wrap{
+	width: 260;
+	.login{
+		width: 240px;
+		height: 126px;
+		border-radius: 4px;
+		list-style: none;
+		padding: 0 10px;
+		background: #f9f9fa;
+		position: relative;
+		margin: 0;
+
+		img{
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 70px;
+			width: 100%;
+			border-radius: 4px 4px 0 0;
+		}
+
+		.login-touxiang{
+			width: 240px;
+			height: 70px;
+			display: flex; /* 启用 Flexbox */
+			align-items: center; /* 垂直居中对齐 */
+			position: relative;
+			img{
+				width: 50px;
+				height: auto;
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+			p{
+				font-size: 14px;
+				color: #72727B;
+				right: 0;
+				left: auto;
+				position: absolute;
+				padding: 10px;
+			}
+		}
+
+		.login-btn{
+			width: 240px;
+			height: 26px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			
+			button{
+				color: #fff;
+				font-size: 16px;
+				width: 94px;
+				height: 26px;
+				background-color: #fc5832;
+				border-radius: 13px;
+				display: inline-block;
+				line-height: 26px;
+				border: none;
+			}
+		}
+	}
+
+	.download{
+		padding: 10px;
+		border-radius: 4px;
+		width: 240px;
+		height: 72px;
+		margin-top: 20px;
+		background-image: url('../img/downloadbeijing.png');
+		display: flex;
+		justify-content: space-between;
+		.download-wenzi{
+			display: flex;
+			flex-direction: column; /* 设置主轴为垂直方向 */
+			.title{
+				font-family: PingFangSC-Medium;
+				font-size: 18px;
+				color: #333;
+				.title-red{
+					color: #fc5832;
+				}
+			}
+			.neirong{
+				flex-grow: 1;
+				font-size: 15px;
+				color: #333;
+				margin-top: 4px;
+				letter-spacing: -1px;
+				img{
+					width: 63px;
+					height: 21px;
+				}
+			}
+		}
+		.download-tuxiang{
+			width: 72px;
+			height: 76px;
+			canvas{
+				background-color: #333;
+			}
+		}
+	}
+}
+
+.ranking-wrap{
+	width: 260px;
+	margin-top: 20px;
+
+	.paihang-container{
+		.image-list{
+			list-style-type: none; /* 移除默认的项目符号 */
+			display: flex; /* 使用 Flexbox 布局 */
+			align-items: center;
+			flex-direction: column;
+			.item{
+				width: 260px;
+				padding: 10px;
+				.all-wrap{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					.image-div{
+						height: 80px;
+						width: 80px;
+						img{
+							width: 80px;
+							height: 80px;
+						}
+					}
+					.text-wrap{
+						width: 160px;
+						display: inline-block;
+						vertical-align: middle;
+						.title-div{
+							height: 20px;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+							overflow: hidden;
+							font-size: 14px;
+							line-height: 20px;
+							max-width: 100%;
+							color: #40404c;
+							font-weight: 700;
+							&:hover{
+								color: #f86442;
+							}
+						}
+						.author-div{
+							text-overflow: ellipsis;
+							white-space: nowrap;
+							overflow: hidden;
+							font-size: 14px;
+							line-height: 1.4;
+							max-width: 100%;
+							color: #a3a3ac;
+							margin-top: 3px;
+						}
+					}
+					.title-div{
+						height: 20px;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
+						font-size: 14px;
+						line-height: 20px;
+						max-width: 100%;
+						color: #40404c;
+						font-weight: 700;
+						&:hover{
+							color: #f86442;
+						}
+					}
+					.counter-div{
+						display: inline-block;
+						width: 15px;
+						height: 20px;
+						margin-right: 10px;
+						vertical-align: middle;
+						line-height: 20px;
+						text-align: left;
+						color: #a3a3ac;
+					}
+				}
+			}
+		}
+	}
+}

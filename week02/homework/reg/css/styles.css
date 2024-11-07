@@ -1,0 +1,228 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* 公共的样式 */
+.common-w {
+    width: 1080px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.all-container {
+	display: flex;
+	flex-direction: column; /* 垂直排列 */
+	align-items: center;		/*水平居中*/
+	justify-content: center; /* 垂直居中 */
+	margin-left: auto;
+	margin-right: auto;
+	width: 1220px;
+	 /* 让容器的高度占满整个视窗 */
+}
+
+input {
+  border: none;
+  background-color: transparent;
+}
+input:focus {
+  outline: none;
+}
+
+
+a {
+  text-decoration: none;
+  color: #a0a0a0;
+}
+.first-header{
+	border-bottom: 1px solid #f5f5f8;
+	/* 盖住下面的阴影 */
+	z-index: 10;
+	position: relative;
+	background-color: #fff;
+}
+
+.header {
+/* 变成弹性布局 */
+display: flex;
+/* 最左边靠左，最右边靠右，其他间隙平分 */
+justify-content: space-between;
+/* 默认水平的称为主轴，和主轴交叉的称为侧轴，下面的意思就是围绕侧轴居中 */
+align-items: center;
+height: 60px;
+
+	.left{
+		width:400px;
+		display: flex;
+		justify-content: space-between;
+		margin-right: 5px;
+
+		.xmly-logo{
+			display: flex;
+			align-items: center; /* 垂直居中 */
+			justify-content: center; /* 水平居中 */
+			width: 154px;
+			height: 60px;
+			span {
+					/* 绝对定位不占用文档流 */
+					position: absolute;
+					left: -9999px;
+			}
+			.logo-img{
+					max-width: 100%;
+					height: auto;
+			}
+		}
+
+		.left-nav{
+			width: 225px;
+			height: 60px;
+			position: relative;
+			ul{
+				width: 100%;
+				height: 100%;
+				list-style: none;
+				display: flex;
+				align-items: center;
+				.nav-box{
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: calc((100%/3)*1);
+					height: 5px;
+					border-radius: 2px;
+					transition: .5s;
+				}
+				li{
+					display: flex; /* 启用 Flexbox 布局 */
+					flex-direction: column; /* 设置主轴为垂直方向 */
+					justify-content: center; /* 垂直居中对齐 */
+					align-items: center; /* 水平居中对齐 */
+					width: 100%;
+					text-align: center;
+					a{
+						display: block;
+						width: 100%;
+						height: 100%;
+					}
+					
+					.active{
+						color: black;
+					}
+					&:nth-child(1):hover~.nav-box{
+						left: calc((100%/3)*0);
+						background-color:#f86442;
+					}
+					&:nth-child(2):hover~.nav-box{
+						left: calc((100%/3)*1);
+						background-color:#f86442;
+					}
+					&:nth-child(3):hover~.nav-box{
+						left: calc((100%/3)*2);
+						background-color:#f86442;
+					}
+				}
+			}
+		}
+	}
+	/* 中间 */
+	.mid{
+		width: 400px;
+		display: flex;
+		justify-content: space-between;
+		/* 搜索包裹 */
+		.mid-search-wrap{
+			width: 360px;
+			height: 40px;
+			display: flex;
+			background-color: #fff;
+			border-radius: 20px;
+			border: 1px solid #f86442;
+
+			.mid-search{
+				width: 300px;
+				text-indent: 20px;
+				&::placeholder {
+						color: #b4b4b4;
+						font-size: 14px;
+				}
+			}
+
+			.mid-search-icon{
+				width: 60px;
+				height: 40px;
+				border-top-right-radius: 20px; /* 只对左上角应用圆角 */
+				border-bottom-right-radius: 20px; /* 只对左下角应用圆角 */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-weight: bold;
+				font-size: 20px;
+				color: #fff;
+				background-color: #f86442;
+			}
+		}
+	}
+
+	.right{
+		width: 310px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center; /* 水平居中对齐 */
+
+		.icon-text-wrap{
+					display: flex; /* 或者使用flex，根据需要 */
+					flex-direction: column; /* 图标和文本垂直排列 */
+					align-items: center; /* 图标和文本水平居中对齐 */
+			p {
+					margin: 0; /* 移除默认的外边距 */
+					font-size: 12px; /* 设置文本大小 */
+					color: #72727B; /* 设置文本颜色 */
+			}
+			span.iconfont{
+				color: #ccc;
+				font-size: 20px;
+				&:hover{
+					color: #f86442;
+				}
+			}
+		}
+
+		.right-touxiang{
+			img{
+				width: 37px; /* 根据需要调整 */
+				height: 37px; /* 根据需要调整 */
+				border-radius: 50%; 
+			}
+		}
+	}
+}
+
+
+
+
+.home-container{
+	display: flex;
+	align-items: center; /* 垂直居中对齐 */
+	width: 1080px;
+	.main-wrap{
+		width: 800px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column; 
+		margin-right: 20px;
+	}
+
+	.side-wrap{
+		width: 260px;
+		height: auto;
+		display: flex;
+		flex-direction: column; /* 设置主轴为垂直方向 */
+		align-items: center;
+		margin-left: 20px; /* 推向右侧 */
+	}
+}
+
+
