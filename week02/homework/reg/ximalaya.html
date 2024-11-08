@@ -10,6 +10,42 @@
   <link rel="stylesheet" href="../iconfont/iconfont.css">
 </head>
 <body>
+  <!-- 下拉框实现 -->
+  <div class="fenlei-wrap">
+     <div class="fenlei-board">
+      <a href="" class="fenlei-cell">音乐</a>
+      <a href="" class="fenlei-cell">有声书</a>
+      <a href="" class="fenlei-cell">娱乐</a>
+      <a href="" class="fenlei-cell">外语</a>
+      <a href="" class="fenlei-cell">儿童</a>
+      <a href="" class="fenlei-cell">商业财经</a>
+      <a href="" class="fenlei-cell">历史</a>
+      <a href="" class="fenlei-cell">相声评书</a>
+      <a href="" class="fenlei-cell">个人成长</a>
+      <a href="" class="fenlei-cell">广播剧</a>
+      <a href="" class="fenlei-cell">有声图书</a>
+      <a href="" class="fenlei-cell">人文国学</a>
+      <a href="" class="fenlei-cell">热点</a>
+      <a href="" class="fenlei-cell">生活</a>
+      <a href="" class="fenlei-cell">悬疑</a>
+      <a href="" class="fenlei-cell">健康</a>
+      <a href="" class="fenlei-cell">汽车</a>
+     </div> 
+  </div>
+
+  <div class="shangchuan-wrap">
+    <div class="shangchuan-container">
+      <div class="shangchuan-arrow"></div>
+      <div class="shangchuan-text">
+        <span class="iconfont icon-jianqie"><p>音频剪辑</p></span>
+        <span class="iconfont icon-yunshangchuan"><p>上传节目</p></span>
+        <span class="iconfont icon-shouyinji"><p>我的节目</p></span>
+        <span class="iconfont icon-vip"><p>主播入驻</p></span>
+      </div>
+    </div>
+    <div class="guanggao-container" >
+    </div>
+  </div>
 
   <div class="all-container">
     <div class="first-header">
@@ -27,7 +63,7 @@
           <nav class="left-nav">
             <ul>
               <li><a href=" " class="active">发现</a></li>
-              <li class="fenlei">
+              <li class="fenlei" onblur="hideFenleiWrap()">
                 <a href=" " >分类</a>
               </li>
               <li><a href=" " >电台</a></li>
@@ -46,7 +82,7 @@
         <!-- 右侧导航栏 -->
         <div class="right">
           <div class="icon-text-wrap">
-              <span class="iconfont icon-yunshangchuan"></span>
+              <span class="iconfont icon-yunshangchuan" id="shangchuan1"></span>
               <p>上传</p>
           </div>
           <div class="icon-text-wrap">

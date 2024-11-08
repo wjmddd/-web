@@ -261,3 +261,44 @@ function renderItems2(globalData,page) {
     container.innerHTML = ''; // 清空之前的内容
     container.appendChild(ul);
 }
+
+/**
+ * 分类下拉框
+ */
+// 获取分类链接的 a 标签
+var fenleiLink = document.querySelector('.fenlei a');
+// 获取分类包裹块
+var fenleiWrap = document.querySelector('.fenlei-wrap');
+
+// 给分类链接的 a 标签添加 onmouseover 事件，以便在鼠标悬浮时显示分类包裹块
+fenleiLink.onmouseover = function() {
+    fenleiWrap.style.display = 'block'; // 显示元素
+    fenleiWrap.style.opacity = '1'; // 设置透明度为1
+  };
+  
+  // 给分类链接的 a 标签添加 onmouseout 事件，以便在鼠标离开时隐藏分类包裹块
+fenleiLink.onmouseout = function() {
+    fenleiWrap.style.opacity = '0'; // 设置透明度为0
+    setTimeout(function() {
+        fenleiWrap.style.display = 'none'; // 隐藏元素
+    }, 500); // 等待过渡效果完成后再隐藏
+};
+
+/**
+ * 上传下拉框
+ */
+
+
+var shangchuanLink = document.querySelector('#shangchuan1');
+var shangchuanWrap = document.querySelector('.shangchuan-wrap');
+shangchuanLink.onmouseover = function() {
+    shangchuanWrap.style.display = 'block'; // 显示元素
+    shangchuanWrap.style.opacity = '1'; // 设置透明度为1
+  };
+  
+  shangchuanLink.onmouseout = function() {
+    shangchuanWrap.style.opacity = '0'; // 设置透明度为0
+    setTimeout(function() {
+        shangchuanWrap.style.display = 'none'; // 隐藏元素
+    }, 500); // 等待过渡效果完成后再隐藏
+};

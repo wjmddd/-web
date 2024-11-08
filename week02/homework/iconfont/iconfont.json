@@ -6,11 +6,32 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1018",
+      "name": "收音机",
+      "font_class": "shouyinji",
+      "unicode": "f0059",
+      "unicode_decimal": 983129
+    },
+    {
+      "icon_id": "1117",
+      "name": "剪切",
+      "font_class": "jianqie",
+      "unicode": "f00bc",
+      "unicode_decimal": 983228
+    },
+    {
       "icon_id": "1256462",
       "name": "搜索",
       "font_class": "sousuo",
       "unicode": "e604",
       "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "1467441",
+      "name": "vip",
+      "font_class": "vip",
+      "unicode": "e6b3",
+      "unicode_decimal": 59059
     },
     {
       "icon_id": "4520332",

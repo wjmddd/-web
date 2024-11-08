@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1730813500440') format('truetype');
+  src: url('iconfont.ttf?t=1731074075261') format('truetype');
 }
 
 .iconfont {
@@ -11,8 +11,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-shouyinji:before {
+  content: "\f0059";
+}
+
+.icon-jianqie:before {
+  content: "\f00bc";
+}
+
 .icon-sousuo:before {
   content: "\e604";
+}
+
+.icon-vip:before {
+  content: "\e6b3";
 }
 
 .icon-shangchuan:before {

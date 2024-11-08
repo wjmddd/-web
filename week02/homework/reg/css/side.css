@@ -70,7 +70,7 @@
 		width: 240px;
 		height: 72px;
 		margin-top: 20px;
-		background-image: url('../img/downloadbeijing.png');
+		background-image: url('../../img/downloadbeijing.png');
 		display: flex;
 		justify-content: space-between;
 		.download-wenzi{
