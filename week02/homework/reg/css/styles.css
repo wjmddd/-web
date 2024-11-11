@@ -50,7 +50,6 @@ a {
 display: flex;
 /* 最左边靠左，最右边靠右，其他间隙平分 */
 justify-content: space-between;
-/* 默认水平的称为主轴，和主轴交叉的称为侧轴，下面的意思就是围绕侧轴居中 */
 align-items: center;
 height: 60px;
 
@@ -133,6 +132,7 @@ height: 60px;
 		justify-content: space-between;
 		/* 搜索包裹 */
 		.mid-search-wrap{
+			position: relative;
 			width: 360px;
 			height: 40px;
 			display: flex;
@@ -162,6 +162,26 @@ height: 60px;
 				color: #fff;
 				background-color: #f86442;
 			}
+		}
+		.dropdown {
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			left: 415px;
+			top: 55px;
+			min-width: 260px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 15;
+				/* 下拉菜单项样式 */
+				.dropdown-item {
+					color: black;
+					padding: 12px 16px;
+					text-decoration: none;
+					display: block;
+					&:hover {
+						background-color: #f1f1f1;
+					}
+				}
 		}
 	}
 
@@ -213,6 +233,7 @@ height: 60px;
 		justify-content: center;
 		flex-direction: column; 
 		margin-right: 20px;
+		margin-top: 10px;
 	}
 
 	.side-wrap{
@@ -222,6 +243,7 @@ height: 60px;
 		flex-direction: column; /* 设置主轴为垂直方向 */
 		align-items: center;
 		margin-left: 20px; /* 推向右侧 */
+		margin-top: -10px;
 	}
 }
 

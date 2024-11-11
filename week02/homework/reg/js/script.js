@@ -55,10 +55,28 @@ function renderItems(globalData,page) {
         const imgDiv = document.createElement('div');
         imgDiv.className = 'image-div';
         imgDiv.innerHTML = `<img src="${item.img}" alt="${item.title}">
+														<img class="zantingjian" src="../img/donghuakaishi.png" data-src="${item.audio}">
                             <span class="iconfont icon-shouting">
-                                
                                 ${formatCount(item.times)}
                             </span>`;
+				
+				// 为 imgDiv 添加鼠标悬停和移出事件监听器
+				imgDiv.addEventListener('mouseenter', function() {
+						this.querySelector('.zantingjian').style.display = 'block';
+				});
+				imgDiv.addEventListener('mouseleave', function() {
+						this.querySelector('.zantingjian').style.display = 'none';
+				});
+
+       // 访问 "暂停键" img 元素
+       const pauseButton = imgDiv.querySelector('.zantingjian');
+       pauseButton.addEventListener('click', function() {
+           // 调用 playAudio 函数并传递对应的音频源
+           playAudio(this.getAttribute('data-src'));
+       });
+
+      
+
 
         // 创建包含标题的 div 标签
         const titleDiv = document.createElement('div');
@@ -93,6 +111,41 @@ function renderItems(globalData,page) {
     // 清空容器并将 ul 添加到容器中
     container.innerHTML = ''; // 清空之前的内容
     container.appendChild(ul);
+}
+
+// 存储当前播放的音频对象和它的源
+let currentAudio = null;
+let currentSrc = null;
+
+function playAudio(src) {
+    // 定义路径前缀
+    const basePath = '/week02/homework';
+    // 将前缀与音频文件的相对路径拼接
+    const fullSrc = basePath + src;
+
+    // 如果当前有音频正在播放，并且请求播放的是同一音频，则暂停
+    if (currentAudio && currentSrc === fullSrc) {
+        currentAudio.pause();
+        currentAudio = null;
+        currentSrc = null;
+    } else {
+        // 如果当前有音频正在播放，暂停并清除
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio = null;
+            currentSrc = null;
+        }
+
+        // 创建新的 Audio 对象
+        const audio = new Audio(fullSrc);
+        audio.play().catch(error => {
+            console.error('Error playing audio:', error);
+        }).then(() => {
+            // 存储当前播放的音频对象和它的源
+            currentAudio = audio;
+            currentSrc = fullSrc;
+        });
+    }
 }
 
 
@@ -150,12 +203,20 @@ function renderItems1(category,page) {
 
         // 创建包含图片的 div 标签
         const imgDiv = document.createElement('div');
-        imgDiv.className = 'image-div';
-        imgDiv.innerHTML = `<img src="${item.img}" alt="${item.text}">
-                            <span class="iconfont icon-shouting">
-                                
-                                ${formatCount(item.times)}
-                            </span>`;
+											imgDiv.className = 'image-div';
+											imgDiv.innerHTML = `<img src="${item.img}" alt="${item.title}">
+																					<img class="zantingjian" src="../img/donghuakaishi.png">
+																					<span class="iconfont icon-shouting">
+																									${formatCount(item.times)}
+																					</span>`;
+
+								// 为 imgDiv 添加鼠标悬停和移出事件监听器
+								imgDiv.addEventListener('mouseenter', function() {
+									this.querySelector('.zantingjian').style.display = 'block';
+								}	);
+								imgDiv.addEventListener('mouseleave', function() {
+										this.querySelector('.zantingjian').style.display = 'none';
+								});
 
         // 创建包含标题的 div 标签
         const titleDiv = document.createElement('div');
@@ -302,3 +363,27 @@ shangchuanLink.onmouseover = function() {
         shangchuanWrap.style.display = 'none'; // 隐藏元素
     }, 500); // 等待过渡效果完成后再隐藏
 };
+
+// 获取搜索框和下拉菜单的DOM元素
+const searchInput = document.getElementById('search-input');
+const dropdownMenu = document.getElementById('dropdown-menu');
+
+// 监听搜索框的点击事件
+searchInput.addEventListener('click', function(event) {
+  // 阻止事件冒泡，避免触发下拉菜单的点击外部隐藏
+  event.stopPropagation();
+  
+  // 显示下拉菜单
+  dropdownMenu.style.display = 'block';
+});
+
+// 监听整个页面的点击事件，用于隐藏下拉菜单
+document.addEventListener('click', function() {
+  dropdownMenu.style.display = 'none';
+});
+
+// 防止点击下拉菜单时触发页面的点击事件
+dropdownMenu.addEventListener('click', function(event) {
+  event.stopPropagation();
+});
+

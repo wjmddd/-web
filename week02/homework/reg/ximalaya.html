@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="./css/side.css" />
   <link rel="stylesheet" href="./css/main.css" />
   <link rel="stylesheet" href="../iconfont/iconfont.css">
+  <link rel="stylesheet" href="./css/player.css">
+  <link rel="stylesheet" href="../playerfont/iconfont.css">
 </head>
 <body>
   <!-- 下拉框实现 -->
@@ -74,8 +76,16 @@
         <!-- 中间搜索框 -->
         <div class="mid">
           <div class="mid-search-wrap">
-            <input class="mid-search" placeholder="专辑/声音/主播">
+            <input class="mid-search" placeholder="专辑/声音/主播" id="search-input">
             <span class="iconfont icon-sousuo1 mid-search-icon"></span>
+          </div>
+
+          <div class="dropdown" id="dropdown-menu">
+            <!-- 下拉菜单项 -->
+            <div class="dropdown-item">菜单项1</div>
+            <div class="dropdown-item">菜单项2</div>
+            <div class="dropdown-item">菜单项3</div>
+            <!-- 更多菜单项 -->
           </div>
         </div>
 
@@ -134,7 +144,7 @@
             <div class="you-head">
               <h2>有声书</h2>
               <div class="you-nav-wrap">
-                <nav class="you-nav" id="nav1" onclick="handleNavClick('nav1')">头陀渊</nav>
+                <nav class="you-nav you-nav-active" id="nav1" onclick="handleNavClick('nav1')">头陀渊</nav>
                 <nav class="you-nav" id="nav2" onclick="handleNavClick('nav2')">斗破苍穹</nav>
                 <nav class="you-nav" id="nav3" onclick="handleNavClick('nav3')">星汉灿烂</nav>
                 <nav class="you-nav" id="nav4" onclick="handleNavClick('nav4')">三体</nav>
@@ -186,14 +196,45 @@
 
         <!-- 有声书排行榜 -->
          <div class="ranking-wrap">
+          <div class="ranking-text">有声书新品榜</div>
           <div class="paihang-container" id="ranking-container">
             <!-- 这里存放json数据 -->
           </div>
          </div>
       </div>
     </div>
+  </div>
 
+  <!-- 播放器实现 -->
+  <div class="player-video-container">
+    <div class="player-wrap">
+      <div class="player-img">
+      </div>
+
+      <div class="player-control">
+        <span class="iconfont icon-shangyiji"></span>
+        <span class="iconfont icon-zanting"></span>
+        <span class="iconfont icon-xiayiji"></span>
+      </div>
+
+      <div class="player-body">
+        <div class="player-body-title"></div>
+        <div class="player-body-process"></div>
+      </div>
+
+      <div class="player-like">
+        <span class="iconfont icon-xihuan"></span>
+        <span class="iconfont icon-xiazai"></span>
+        <span class="iconfont icon-zhuanfa"></span>
+      </div>
+
+      <div class="player-xuanze">
+        <span class="iconfont icon-yinliang"></span>
+        <span class="iconfont icon-xunhuan"></span>
+        <span class="iconfont icon-24gl-playlist2"></span>
+      </div>
+    </div>
   </div>
 </body>
-<script src="script.js"></script>
+<script src="./js/script.js"></script>
 </html>
