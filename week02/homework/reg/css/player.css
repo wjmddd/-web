@@ -7,7 +7,7 @@
   color: white;
   box-sizing: border-box;
   background:url(../../img/player-background.png);
-  z-index: 150;
+  z-index: 999;
   .player-wrap{
     width: 1080px;
     height: 100%;

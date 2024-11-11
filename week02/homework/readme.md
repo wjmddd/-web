@@ -216,3 +216,128 @@ fenleiLink.onmouseout = function() {
 };
 ```
 
+
+
+# 5 图片动画效果的实现
+
+1. 在js代码中的img-div中加入暂停键的图片，并将图片设置居中
+2. 对整个img-div添加鼠标监听事件，通过改变display样式，实现暂停键图片的出现与切换
+
+
+
+# 6 音乐播放的实现
+
+1. 对暂停键绑定play-Audio函数，控制音乐的播放。
+
+2. playAudio的函数主要逻辑为，通过两个全局变量currentAudio 和currentSrc存储当前播放的音乐和源，当点击暂停键时，取出其对应数据的audio中所存储的音乐的源，将音乐保存到 currentAudio中，再次点击则暂停，换图片点击，则清除当前音乐和源，更换音乐和源，重新播放，
+
+   ```json
+   function playAudio(src) {
+       // 定义路径前缀
+       const basePath = '/week02/homework';
+       // 将前缀与音频文件的相对路径拼接
+       const fullSrc = basePath + src;
+   
+       // 如果当前有音频正在播放，并且请求播放的是同一音频，则暂停
+       if (currentAudio && currentSrc === fullSrc) {
+           currentAudio.pause();
+           currentAudio = null;
+           currentSrc = null;
+       } else {
+           // 如果当前有音频正在播放，暂停并清除
+           if (currentAudio) {
+               currentAudio.pause();
+               currentAudio = null;
+               currentSrc = null;
+           }
+   
+           // 创建新的 Audio 对象
+           const audio = new Audio(fullSrc);
+           audio.play().catch(error => {
+               console.error('Error playing audio:', error);
+           }).then(() => {
+               // 存储当前播放的音频对象和它的源
+               currentAudio = audio;
+               currentSrc = fullSrc;
+           });
+       }
+   }
+   ```
+
+   
+
+# 7 音乐播放栏的实现
+
+1. 其样式同样采用position:fixed来保持其与页面位置的相对固定。
+
+2. 目前实现了两个功能：
+
+   1. 播放音乐时播放栏图片的更换，思路为在playAudio函数中，增加一个函数 专门来插入图片，并将图片的源作为参数传入
+
+      
+
+   2. 暂停音乐的实现，通过一个全局变量isPaused判断音乐是否处于暂停状态，从而控制音乐的播放与暂停
+
+      ```json
+      // 控制音乐播放的函数 flag反应音乐的播放与暂停
+      let isPaused = true; // 初始状态为暂停
+      function pauseMusic() {
+          if (currentAudio && !isPaused) {
+              currentAudio.pause();
+              isPaused = true; // 更新全局变量
+          } else if (currentAudio && isPaused) {
+              currentAudio.play()
+                  .then(() => {
+                      isPaused = false; // 更新全局变量
+                  })
+                  .catch(error => {
+                      console.error('Error playing audio:', error);
+                  });
+          }
+      }
+      ```
+
+      
+
+ 3. 与此同时，修改playAudio函数的逻辑，使其可以通过pauseMusic控制音乐的暂停开始
+
+    ```json
+    // 如果当前有音频正在播放，并且请求播放的是同一音频，则只改变播放状态
+    	if (currentAudio && currentSrc === fullSrc) {
+    			pauseMusic(); // 调用pauseMusic来改变播放状态
+    ```
+
+
+
+# 8 导航栏动画实现
+
+```css
+	&:nth-child(1):hover~.nav-box{
+						left: calc((100%/3)*0);
+						background-color:#f86442;
+					}
+					&:nth-child(2):hover~.nav-box{
+						left: calc((100%/3)*1);
+						background-color:#f86442;
+					}
+					&:nth-child(3):hover~.nav-box{
+						left: calc((100%/3)*2);
+						background-color:#f86442;
+					}
+```
+
+
+
+主要代码为上，通过一个nav-box的hover属性的移动，来实现导航栏的动画效果
+
+
+
+
+
+# 9 未完成功能
+
+音乐播放栏的切换音乐，进度条等功能
+
+点击图片播放音乐时 图片由▶变为⏸，两个播放暂停图片的切换功能
+
+客户端，头像的展示效果

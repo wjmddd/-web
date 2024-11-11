@@ -72,7 +72,7 @@ function renderItems(globalData,page) {
        const pauseButton = imgDiv.querySelector('.zantingjian');
        pauseButton.addEventListener('click', function() {
            // 调用 playAudio 函数并传递对应的音频源
-           playAudio(this.getAttribute('data-src'));
+           playAudio(this.getAttribute('data-src'), item.img, item.title);
        });
 
       
@@ -116,38 +116,67 @@ function renderItems(globalData,page) {
 // 存储当前播放的音频对象和它的源
 let currentAudio = null;
 let currentSrc = null;
+//存放播放器图片的块
+var playerImgContainers = document.getElementsByClassName('player-img');
+const playerImgContainer=playerImgContainers[0];
 
-function playAudio(src) {
-    // 定义路径前缀
-    const basePath = '/week02/homework';
-    // 将前缀与音频文件的相对路径拼接
-    const fullSrc = basePath + src;
-
-    // 如果当前有音频正在播放，并且请求播放的是同一音频，则暂停
-    if (currentAudio && currentSrc === fullSrc) {
+// 控制音乐播放的函数 flag反应音乐的播放与暂停
+let isPaused = true; // 初始状态为暂停
+function pauseMusic() {
+    if (currentAudio && !isPaused) {
         currentAudio.pause();
-        currentAudio = null;
-        currentSrc = null;
-    } else {
-        // 如果当前有音频正在播放，暂停并清除
-        if (currentAudio) {
-            currentAudio.pause();
-            currentAudio = null;
-            currentSrc = null;
-        }
-
-        // 创建新的 Audio 对象
-        const audio = new Audio(fullSrc);
-        audio.play().catch(error => {
-            console.error('Error playing audio:', error);
-        }).then(() => {
-            // 存储当前播放的音频对象和它的源
-            currentAudio = audio;
-            currentSrc = fullSrc;
-        });
+        isPaused = true; // 更新全局变量
+    } else if (currentAudio && isPaused) {
+        currentAudio.play()
+            .then(() => {
+                isPaused = false; // 更新全局变量
+            })
+            .catch(error => {
+                console.error('Error playing audio:', error);
+            });
     }
 }
 
+// 播放音乐的函数
+function playAudio(src, imgSrc, title) {
+	// 定义路径前缀
+	const basePath = '/week02/homework';
+	// 将前缀与音频文件的相对路径拼接
+	const fullSrc = basePath + src;
+
+	// 如果当前有音频正在播放，并且请求播放的是同一音频，则只改变播放状态
+	if (currentAudio && currentSrc === fullSrc) {
+			pauseMusic(); // 调用pauseMusic来改变播放状态
+	} else {
+			// 如果当前有音频正在播放，暂停并清除
+			if (currentAudio) {
+					currentAudio.pause();
+					currentAudio = null;
+					currentSrc = null;
+					// 清空 playerImgContainer 中的内容
+					insertPlayerImg('', ''); // 可以传递空字符串或者适当的默认图片
+			}
+
+			// 创建新的 Audio 对象
+			const audio = new Audio(fullSrc);
+			audio.play()
+					.then(() => {
+							// 存储当前播放的音频对象和它的源
+							currentAudio = audio;
+							currentSrc = fullSrc;
+							// 插入新图片
+							insertPlayerImg(imgSrc, title);
+							isPaused = false; // 更新全局变量
+					})
+					.catch(error => {
+							console.error('Error playing audio:', error);
+					});
+	}
+}
+//设置向player中插入图片的代码
+function insertPlayerImg(imgSrc, title) {
+	playerImgContainer.innerHTML = `<img src="${imgSrc}" alt="${title}">`;
+}
 
 
 //定义切换有声书页面的函数 根据id值切割data
@@ -386,4 +415,6 @@ document.addEventListener('click', function() {
 dropdownMenu.addEventListener('click', function(event) {
   event.stopPropagation();
 });
+
+
 
